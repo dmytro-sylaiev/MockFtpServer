@@ -35,11 +35,13 @@ public class PassCommandHandler extends AbstractStubCommandHandler implements Co
 
     public static final String PASSWORD_KEY = "password";
 
+    private boolean accountRequired = true;
+
     /**
      * Constructor. Initialize the replyCode.
      */
     public PassCommandHandler() {
-        setReplyCode(ReplyCodes.PASS_OK);
+        setReplyCode(accountRequired ? ReplyCodes.PASS_NEED_ACCOUNT : ReplyCodes.PASS_OK);
     }
 
     /**

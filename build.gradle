@@ -6,7 +6,7 @@ plugins {
     id 'signing'
 }
 
-version = "3.2.0"
+version = "3.2.0-account"
 group = 'org.mockftpserver'
 archivesBaseName = 'MockFtpServer'
 
@@ -43,6 +43,16 @@ dependencies {
 java {
     withJavadocJar()
     withSourcesJar()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.mockftpserver.stub.StubFtpServer'
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 test {

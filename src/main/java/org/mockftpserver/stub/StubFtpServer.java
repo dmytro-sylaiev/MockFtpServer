@@ -145,4 +145,8 @@ public class StubFtpServer extends AbstractFtpServer {
         ReplyTextBundleUtil.setReplyTextBundleIfAppropriate(commandHandler, getReplyTextBundle());
     }
 
+    public static void main(String[] args) {
+        StubFtpServer stubFtpServer = new StubFtpServer();
+        stubFtpServer.start();
+    }
 }
