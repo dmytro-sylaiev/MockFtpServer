@@ -184,7 +184,7 @@ public class DefaultSession implements Session {
      */
     public int switchToPassiveMode() {
         try {
-            passiveModeDataSocket = serverSocketFactory.createServerSocket(0);
+            passiveModeDataSocket = serverSocketFactory.createServerSocket(8821);
             return passiveModeDataSocket.getLocalPort();
         }
         catch (IOException e) {

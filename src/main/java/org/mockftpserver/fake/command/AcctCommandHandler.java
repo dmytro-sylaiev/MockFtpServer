@@ -35,9 +35,12 @@ public class AcctCommandHandler extends AbstractFakeCommandHandler {
     protected void handle(Command command, Session session) {
         String accountName = command.getRequiredParameter(0);
         String username = (String) getRequiredSessionAttribute(session, SessionKeys.USERNAME);
-
-        session.setAttribute(SessionKeys.ACCOUNT_NAME, accountName);
-        sendReply(session, ReplyCodes.ACCT_OK, "acct", list(username));
+        if (accountName.equals(username)) {
+            session.setAttribute(SessionKeys.ACCOUNT_NAME, accountName);
+            sendReply(session, ReplyCodes.ACCT_OK, "acct", list(username));
+        } else {
+            sendReply(session, ReplyCodes.USER_ACCOUNT_NOT_VALID, "acct.loginFailed");
+        }
     }
 
 }
